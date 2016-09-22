@@ -40,29 +40,32 @@ class Player:
 
 # = Player()
 
-#player2 = Player()
+# player2 = Player()
 
-full_board = [(x,y) for y in range(1,10) for x in 'ABCDEFGHIJ']
+full_board = [(x,y) for y in range(1,11) for x in 'ABCDEFGHIJ']
 
 print(full_board)
 
 hits = [('A', 1), ('B', 3), ('C', 4), ('D', 1), ('E', 6), ('F', 9)]
-
-count = 1
+print("  " + "  ".join([chr(c) for c in range(ord('A'), ord('A') + 10)]))
+count = 0
 row_count = 1
-board = """1 """
+board = """1"""
 for space in full_board:
 
     if space in hits:
-        board += "X"
+        board += " X "
     else:
-        board += "O"
+        board += " O "
     count += 1
     if count == 10:
         row_count += 1
-        board += """
-""" + str(row_count)+""" """
-        count = 1
+
+        if row_count < 11:
+            board += """
+""" + str(row_count)
+
+        count = 0
 
 print(board)
 
